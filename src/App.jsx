@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Detail from "./ui/Detail";
 import AppLayout from "./ui/AppLayout";
 import Main, { loader as countriesLoader } from "./ui/Main";
+import { CountryProvider } from "./Context/CountryContext";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,11 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <CountryProvider>
+      <RouterProvider router={router} />;
+    </CountryProvider>
+  );
 }
 
 export default App;

@@ -1,20 +1,33 @@
+import { useCountry } from "../Context/CountryContext";
 import { getCountries } from "../services/CountriesApi";
 import Country from "./Country";
 import SearchFilter from "./SearchFilter";
-import { useLoaderData, useNavigation } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
 function Main() {
   const countries = useLoaderData();
+
+  const { query, handleFilterCountries, handleSearchCountries } = useCountry();
+
+  const filtredCountries = handleFilterCountries(countries);
+
+  const searchedCountries = query
+    ? handleSearchCountries(filtredCountries)
+    : filtredCountries;
 
   return (
     <main className="bg-veryDarkBlue flex-1 px-6 py-8 ">
       <section className="container m-auto">
         <SearchFilter />
-        <div className="my-14 flex flex-col gap-10 items-center lg:flex-row lg:gap-14 lg:flex-wrap ">
-          {countries.map((country) => (
-            <Country data={country} key={country.name.common} />
-          ))}
-        </div>
+        {searchedCountries.length > 0 ? (
+          <div className="my-14 flex flex-col gap-10 items-center lg:flex-row lg:gap-14 lg:flex-wrap lg:justify-center ">
+            {searchedCountries.map((country) => (
+              <Country data={country} key={country.name.common} />
+            ))}
+          </div>
+        ) : (
+          <p className="text-2xl text-white mt-10"> No country Found...</p>
+        )}
       </section>
     </main>
   );
