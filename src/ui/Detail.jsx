@@ -6,7 +6,7 @@ function Detail() {
   const country = useLoaderData();
   const navigate = useNavigate();
 
-  return <main className=" dark:bg-veryDarkBlue p-8 ">
+  return <main className=" dark:bg-veryDarkBlue px-8 py-20 ">
     
  <button onClick={()=>navigate(-1)} className=" dark:bg-darkBlue dark:border-none flex  items-center gap-3 w-32 
 p-2 px-4 dark:text-white  rounded-md shadow-xl border border-slate-200 mb-10 text-xl" ><MdOutlineArrowBack/> Back</button>
@@ -77,10 +77,10 @@ p-2 px-4 dark:text-white  rounded-md shadow-xl border border-slate-200 mb-10 tex
           {
             country.borders.length === 0 ? <p className="text-xl text-lightModeText dark:text-white text-center">No borders Found...</p> :
 
-            <ul className="gap-2 flex  ">
+            <ul className=" gap-3 grid grid-cols-4 col-span-2 ">
           {country.borders.map(border=>
-            <li>
-              <Link to={`/${border}`} className="dark:bg-darkBlue dark:text-white dark:border-none border border-slate-200 px-4  py-2 rounded-md shadow-md text-lightModeText">{border}</Link>
+            <li className="dark:bg-darkBlue dark:text-white dark:border-none border border-slate-200 px-4 py-2 rounded-md shadow-md text-lightModeText">
+              <Link to={`/${border}`} >{border}</Link>
               </li>
           )}
         </ul>
