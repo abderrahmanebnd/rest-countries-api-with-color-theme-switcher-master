@@ -5,6 +5,7 @@ const CountryContext = createContext();
 function CountryProvider({ children }) {
   const [region, setRegion] = useState("All");
   const [query, setQuery] = useState("");
+  const [dark,setDark] = useState(false);
 
   function handleChangeRegion(e) {
     setRegion(e.target.value);
@@ -31,6 +32,8 @@ function CountryProvider({ children }) {
     handleChangeRegion,
     handleFilterCountries,
     handleSearchCountries,
+    dark,
+    setDark
   };
   return (
     <CountryContext.Provider value={value}>{children}</CountryContext.Provider>

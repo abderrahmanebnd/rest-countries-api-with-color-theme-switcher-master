@@ -1,10 +1,11 @@
+import { memo } from "react";
 import { useCountry } from "../Context/CountryContext";
 import { getCountries } from "../services/CountriesApi";
 import Country from "./Country";
 import SearchFilter from "./SearchFilter";
 import { useLoaderData } from "react-router-dom";
 
-function Main() {
+const Main = memo(function Main() {
   const countries = useLoaderData();
 
   const { query, handleFilterCountries, handleSearchCountries } = useCountry();
@@ -16,7 +17,7 @@ function Main() {
     : filtredCountries;
 
   return (
-    <main className="bg-veryDarkBlue flex-1 px-6 py-8 ">
+    <main className="dark:bg-veryDarkBlue flex-1 px-6 py-8 ">
       <section className="container m-auto">
         <SearchFilter />
         {searchedCountries.length > 0 ? (
@@ -26,13 +27,13 @@ function Main() {
             ))}
           </div>
         ) : (
-          <p className="text-2xl text-white mt-10"> No country Found...</p>
+          <p className="text-2xl dark:text-white mt-10"> No country Found...</p>
         )}
       </section>
     </main>
   );
 }
-
+);
 export default Main;
 
 export async function loader() {
