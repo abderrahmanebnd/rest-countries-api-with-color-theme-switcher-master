@@ -25,7 +25,7 @@ function SearchFilter() {
           className="outline-none bg-darkBlue text-white py-4 px-5  rounded-md shadow-lg  "
         >
           {[
-            "Filter by region",
+            "All",
             "Americas",
             "Africa",
             "Asia",

@@ -1,9 +1,9 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const CountryContext = createContext();
 
 function CountryProvider({ children }) {
-  const [region, setRegion] = useState("Filter by region");
+  const [region, setRegion] = useState("All");
   const [query, setQuery] = useState("");
 
   function handleChangeRegion(e) {
@@ -17,7 +17,7 @@ function CountryProvider({ children }) {
     return searchedCountries;
   }
   function handleFilterCountries(countries) {
-    if (region === "Filter by region") return countries;
+    if (region === "All") return countries;
     const filtredCountries = countries.filter(
       (c) => c.region.toLowerCase() === region.toLowerCase(),
     );

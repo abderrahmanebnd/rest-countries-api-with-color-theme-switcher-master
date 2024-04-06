@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Detail from "./ui/Detail";
+import Detail, { loader as detailLoader } from "./ui/Detail";
 import AppLayout from "./ui/AppLayout";
 import Main, { loader as countriesLoader } from "./ui/Main";
 import { CountryProvider } from "./Context/CountryContext";
@@ -15,8 +15,9 @@ const router = createBrowserRouter([
         loader: countriesLoader,
       },
       {
-        path: "/:countryId",
+        path: "/:code",
         element: <Detail />,
+        loader: detailLoader,
       },
     ],
   },
