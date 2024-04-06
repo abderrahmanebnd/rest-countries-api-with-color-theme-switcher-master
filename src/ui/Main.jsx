@@ -17,7 +17,7 @@ const Main = memo(function Main() {
     : filtredCountries;
 
   return (
-    <main className="dark:bg-veryDarkBlue flex-1 px-6 py-8 ">
+    <main className="dark:bg-veryDarkBlue flex-1 px-6 py-24 ">
       <section className="container m-auto">
         <SearchFilter />
         {searchedCountries.length > 0 ? (

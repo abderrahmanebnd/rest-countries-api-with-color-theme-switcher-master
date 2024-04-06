@@ -4,7 +4,7 @@ import { useCountry } from "../Context/CountryContext";
 function Header() {
   const {setDark,dark} = useCountry();
   return (
-    <header className="dark:bg-darkBlue dark:text-white flex justify-between h-14 items-center px-6 text-veryDarkBlue shadow-md  ">
+    <header className="dark:bg-darkBlue dark:text-white flex justify-between h-14 items-center px-6 text-veryDarkBlue shadow-md fixed right-0 left-0 z-10 ">
       <Link to="/" className="font-bold ">Where is the world?</Link>
       <button className="flex items-center gap-2" onClick={()=>setDark(d=>!d)}>
          {dark ?  
